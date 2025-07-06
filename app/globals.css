@@ -22,5 +22,47 @@
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-noto-naskh-arabic), Arial, Helvetica, sans-serif;
+  line-height: 1.8;
+}
+
+.figure {
+  width: 100px;
+  height: auto;
+  object-fit: contain;
+  margin: 1rem 0;
+}
+
+.chapterContent {
+  line-height: 2;
+  margin-bottom: 2rem;
+}
+
+/* Floating bar styles */
+.floating-bar {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+/* Reading content styles */
+main {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+
+/* Responsive design */
+@media (max-width: 768px) {
+  main {
+    padding: 1rem 0.5rem;
+  }
+  
+  h1 {
+    font-size: 1.5rem;
+  }
+  
+  h3 {
+    font-size: 1.25rem;
+  }
 }
