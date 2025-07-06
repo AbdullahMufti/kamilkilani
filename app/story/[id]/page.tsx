@@ -5,6 +5,7 @@ import { use } from "react";
 import { KamilK } from "@/data/data";
 import Navigation from "../../components/Navigation";
 import { useRouter } from "next/navigation";
+import { DOMNode } from "html-react-parser";
 
 interface StoryPageProps {
   params: Promise<{
@@ -37,8 +38,12 @@ export default function StoryPage({ params }: StoryPageProps) {
 
   // Custom parser options to handle image clicks
   const parserOptions = {
-    replace: (domNode: any) => {
-      if (domNode.type === "tag" && domNode.name === "img") {
+    replace: (domNode: DOMNode) => {
+      if (
+        domNode.type === "tag" &&
+        domNode.name === "img" &&
+        "attribs" in domNode
+      ) {
         return (
           <img
             {...domNode.attribs}
