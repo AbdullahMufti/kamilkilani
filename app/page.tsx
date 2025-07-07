@@ -1,15 +1,13 @@
 "use client";
 import { KamilK } from "@/data/data";
 import Link from "next/link";
-
+import DarkModeToggle from "./components/DarkModeToggle";
 export default function Home() {
   return (
-    <main
-      dir="rtl"
-      className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100"
-    >
+    <main dir="rtl" className="min-h-screen ">
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <h1 className="text-6xl font-bold text-center mb-12 text-gray-800">
+        <DarkModeToggle />
+        <h1 className="text-4xl md:text-6xl font-bold text-center mb-12 ">
           قصص كاميل كيلاني
         </h1>
 
@@ -18,7 +16,7 @@ export default function Home() {
             <Link
               key={index}
               href={`/story/${index}`}
-              className="group block bg-white rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2"
+              className="group block rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
             >
               <div className="relative overflow-hidden rounded-t-lg">
                 <img
@@ -31,21 +29,19 @@ export default function Home() {
                 </div>
               </div>
               <div className="p-4">
-                <h2 className="text-xl font-semibold text-gray-800 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+                <h2 className="text-xl font-semibold  mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                   {story.title}
                 </h2>
-                <p className="text-gray-600 text-sm">
-                  {story.chapters.length} فصل
-                </p>
+                <p className=" text-sm">{story.chapters.length} فصل</p>
               </div>
             </Link>
           ))}
         </div>
 
         <div className="text-center mt-12">
-          <p className="text-gray-600 text-lg">
-            اختر قصة من القائمة أعلاه للبدء في القراءة
-          </p>
+          <p className=" text-lg">اختر قصة من القائمة أعلاه للبدء في القراءة</p>
+          <br />
+          <div>Data scraped from hindawi.org for educational purposes</div>
         </div>
       </div>
     </main>

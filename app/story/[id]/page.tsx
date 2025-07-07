@@ -6,7 +6,7 @@ import { KamilK } from "@/data/data";
 import Navigation from "../../components/Navigation";
 import { useRouter } from "next/navigation";
 import { DOMNode } from "html-react-parser";
-
+import FloatingControls from "@/app/components/FloatingControl";
 interface StoryPageProps {
   params: Promise<{
     id: string;
@@ -36,6 +36,10 @@ export default function StoryPage({ params }: StoryPageProps) {
     setEnlargedImage(url);
   };
 
+  const handleIndexChange = (newIndex: number) => {
+    router.push(`/story/${newIndex}`);
+  };
+
   // Custom parser options to handle image clicks
   const parserOptions = {
     replace: (domNode: DOMNode) => {
@@ -48,7 +52,7 @@ export default function StoryPage({ params }: StoryPageProps) {
           <img
             {...domNode.attribs}
             onClick={() => enlargeImage(domNode.attribs.src)}
-            className="bg-white figure"
+            className="bg-white  figure rounded-lg shadow-md"
             style={{ maxWidth: "100%", height: "auto" }}
           />
         );
@@ -57,10 +61,32 @@ export default function StoryPage({ params }: StoryPageProps) {
   };
 
   if (storyIndex < 0 || storyIndex >= KamilK.length) {
-    return <div>Story not found</div>;
+    return <div className="text-gray-800 dark:text-white">Story not found</div>;
   }
 
   const currentStory = KamilK[storyIndex];
+  const increaseFontSize = () => {
+    if (fontSize) {
+      setFontSize(Math.min(fontSize + 2, 48));
+    }
+  };
+
+  const decreaseFontSize = () => {
+    if (fontSize) {
+      setFontSize(Math.max(fontSize - 2, 12));
+    }
+  };
+  const goToPrevious = () => {
+    if (storyIndex !== undefined && storyIndex > 0) {
+      handleIndexChange(storyIndex - 1);
+    }
+  };
+
+  const goToNext = () => {
+    if (storyIndex !== undefined && storyIndex < KamilK.length - 1) {
+      handleIndexChange(storyIndex + 1);
+    }
+  };
 
   return (
     <>
@@ -68,15 +94,29 @@ export default function StoryPage({ params }: StoryPageProps) {
         storyTitle={currentStory.title}
         fontSize={fontSize}
         onFontSizeChange={setFontSize}
+        currentIndex={storyIndex}
+        totalStories={KamilK.length}
+        onIndexChange={handleIndexChange}
       />
-      <main dir="rtl" className="pb-8">
-        <div style={{ fontSize: `${fontSize}px` }}>
-          <h1 className="text-8xl text-center font-bold mt-20">
+
+      {/* Floating Controls - Left Border */}
+      <FloatingControls
+        storyIndex={storyIndex}
+        fontSize={fontSize}
+        decreaseFontSize={decreaseFontSize}
+        increaseFontSize={increaseFontSize}
+        goToPrevious={goToPrevious}
+        goToNext={goToNext}
+      />
+
+      <main dir="rtl" className="pb-8  min-h-screen ">
+        <div style={{ fontSize: `${fontSize}px` }} className="">
+          <h1 className="text-8xl text-center font-bold mt-20 text-gray-800 dark:text-white">
             {currentStory.title}
           </h1>
           <img
             src={`/covers/${currentStory.image}`}
-            className="figure"
+            className="figure bg-white  rounded-lg shadow-md"
             onClick={() => enlargeImage(`/covers/${currentStory.image}`)}
           />
           {enlargedImage && (
@@ -86,11 +126,11 @@ export default function StoryPage({ params }: StoryPageProps) {
             >
               <img
                 src={`${enlargedImage}`}
-                className="w-full bg-white h-auto max-w-md max-h-screen object-contain"
+                className="w-full bg-white h-auto max-w-md max-h-screen object-contain rounded-lg shadow-xl"
                 onClick={() => setEnlargedImage(null)}
               />
               <button
-                className="absolute top-4 right-4 text-white text-2xl"
+                className="absolute top-4 right-4 text-white text-2xl bg-black bg-opacity-50 rounded-full w-10 h-10 flex items-center justify-center hover:bg-opacity-70 transition-colors"
                 onClick={() => setEnlargedImage(null)}
               >
                 X
@@ -98,10 +138,12 @@ export default function StoryPage({ params }: StoryPageProps) {
             </div>
           )}
 
-          <div>
+          <div className=" max-w-none">
             {currentStory.chapters.map((EachChap, idx) => (
-              <div key={idx}>
-                <div>{parse(EachChap.text, parserOptions)}</div>
+              <div key={idx} className="mb-8">
+                <div className=" leading-relaxed ml-20 md:ml-10">
+                  {parse(EachChap.text, parserOptions)}
+                </div>
               </div>
             ))}
           </div>
