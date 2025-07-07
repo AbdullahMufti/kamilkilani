@@ -10,11 +10,18 @@ interface StoryPageProps {
   };
 }
 
+interface MetadataProps {
+  params: Promise<{
+    id: string;
+  }>;
+}
+
 // Generate metadata for the page
 export async function generateMetadata({
   params,
-}: StoryPageProps): Promise<Metadata> {
-  const storyId = parseInt(params.id);
+}: MetadataProps): Promise<Metadata> {
+  const { id } = await params;
+  const storyId = parseInt(id);
 
   // Validate story ID
   if (isNaN(storyId) || storyId < 0 || storyId >= KamilK.length) {
