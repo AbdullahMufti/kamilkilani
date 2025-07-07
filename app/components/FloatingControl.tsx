@@ -16,12 +16,12 @@ const FloatingControls = ({
   goToNext: () => void;
 }) => {
   return (
-    <div className="fixed left-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center gap-4 bg-white/90 dark:bg-gray-800/90 backdrop-blur-sm rounded-lg  shadow-lg border border-gray-200 dark:border-gray-700">
+    <div className="fixed left-0 top-1/2 transform -translate-y-1/2 flex flex-col items-center gap-4  backdrop-blur-sm rounded-lg  shadow-lg border border-gray-200 dark:border-gray-700">
       {/* Previous Story Button */}
       {storyIndex !== undefined && storyIndex > 0 && (
         <button
           onClick={goToPrevious}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="flex items-center gap-2 transition-colors p-2 rounded-lg "
           title="القصة السابقة"
         >
           <svg
@@ -46,7 +46,7 @@ const FloatingControls = ({
         <div className="flex flex-col items-center gap-2">
           <button
             onClick={decreaseFontSize}
-            className="rounded-full flex items-center justify-center text-sm font-bold transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 p-2"
+            className="rounded-full flex items-center justify-center text-sm font-bold transition-colors  p-2"
             title="تصغير الخط"
           >
             <svg
@@ -59,19 +59,18 @@ const FloatingControls = ({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-600 dark:text-gray-300"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" x2="16.65" y1="21" y2="16.65" />
               <line x1="8" x2="14" y1="11" y2="11" />
             </svg>
           </button>
-          <span className="text-lg font-medium px-2 min-w-[2rem] text-center text-gray-800 dark:text-white">
+          <span className="text-lg font-medium px-2 min-w-[2rem] text-center">
             {fontSize}
           </span>
           <button
             onClick={increaseFontSize}
-            className="rounded-full flex items-center justify-center text-sm font-bold transition-colors hover:bg-gray-100 dark:hover:bg-gray-700 p-2"
+            className="rounded-full flex items-center justify-center text-sm font-bold transition-colors  p-2"
             title="تكبير الخط"
           >
             <svg
@@ -84,7 +83,6 @@ const FloatingControls = ({
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
-              className="text-gray-600 dark:text-gray-300"
             >
               <circle cx="11" cy="11" r="8" />
               <line x1="21" x2="16.65" y1="21" y2="16.65" />
@@ -99,7 +97,7 @@ const FloatingControls = ({
       {storyIndex !== undefined && storyIndex < KamilK.length - 1 && (
         <button
           onClick={goToNext}
-          className="flex items-center gap-2 text-gray-600 hover:text-gray-800 dark:text-gray-300 dark:hover:text-gray-100 transition-colors p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700"
+          className="flex items-center gap-2 transition-colors p-2 rounded-lg "
           title="القصة التالية"
         >
           <span className="text-sm font-medium">التالي</span>

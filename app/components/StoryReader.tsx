@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import parse from "html-react-parser";
 import { DOMNode } from "html-react-parser";
 import FloatingControls from "./FloatingControl";
+import Image from "next/image";
 
 interface StoryReaderProps {
   storyIndex: number;
@@ -89,8 +90,11 @@ export default function StoryReader({
           <h1 className="text-2xl md:text-8xl text-center font-bold mt-20">
             {story.title}
           </h1>
-          <img
+          <Image
+            width={360}
+            height={480}
             src={`/covers/${story.image}`}
+            alt={story.title}
             className="figure bg-white rounded-lg shadow-md cursor-pointer"
             onClick={() => enlargeImage(`/covers/${story.image}`)}
           />
@@ -99,8 +103,11 @@ export default function StoryReader({
               className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
               onClick={() => setEnlargedImage(null)}
             >
-              <img
+              <Image
+                width={360}
+                height={480}
                 src={`${enlargedImage}`}
+                alt={story.title}
                 className="w-full bg-white h-auto max-w-md max-h-screen object-contain rounded-lg shadow-xl"
                 onClick={() => setEnlargedImage(null)}
               />

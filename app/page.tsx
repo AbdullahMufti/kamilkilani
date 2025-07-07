@@ -3,6 +3,7 @@ import { KamilK } from "@/data/data";
 import Link from "next/link";
 import DarkModeToggle from "./components/DarkModeToggle";
 import { useState } from "react";
+import Image from "next/image";
 export default function Home() {
   const [fontSize, setFontSize] = useState(16);
   const increaseFontSize = () => {
@@ -83,7 +84,9 @@ export default function Home() {
               className="group block rounded-lg shadow-md hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-200 dark:border-gray-700"
             >
               <div className="relative overflow-hidden rounded-t-lg">
-                <img
+                <Image
+                  width={360}
+                  height={480}
                   src={`/covers/${story.image}`}
                   alt={story.title}
                   className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
