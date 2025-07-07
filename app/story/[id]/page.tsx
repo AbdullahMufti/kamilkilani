@@ -69,9 +69,9 @@ export default function StoryPage({ params }: StoryPageProps) {
         fontSize={fontSize}
         onFontSizeChange={setFontSize}
       />
-      <main dir="rtl" className="pt-40  pb-8">
+      <main dir="rtl" className="pb-8">
         <div style={{ fontSize: `${fontSize}px` }}>
-          <h1 className="text-8xl text-center font-bold">
+          <h1 className="text-8xl text-center font-bold mt-20">
             {currentStory.title}
           </h1>
           <img
@@ -80,12 +80,21 @@ export default function StoryPage({ params }: StoryPageProps) {
             onClick={() => enlargeImage(`/covers/${currentStory.image}`)}
           />
           {enlargedImage && (
-            <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div
+              className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+              onClick={() => setEnlargedImage(null)}
+            >
               <img
                 src={`${enlargedImage}`}
-                className="w-full bg-white h-auto max-w-screen max-h-screen object-contain"
+                className="w-full bg-white h-auto max-w-md max-h-screen object-contain"
                 onClick={() => setEnlargedImage(null)}
               />
+              <button
+                className="absolute top-4 right-4 text-white text-2xl"
+                onClick={() => setEnlargedImage(null)}
+              >
+                X
+              </button>
             </div>
           )}
 
