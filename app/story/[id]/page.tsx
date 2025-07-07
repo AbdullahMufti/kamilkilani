@@ -32,12 +32,20 @@ export async function generateMetadata({
   const description =
     firstChapterText
       .replace(/<[^>]*>/g, "") // Remove HTML tags
-      .substring(0, 160)
-      .trim() + (firstChapterText.length > 160 ? "..." : "");
+      .substring(0, 50)
+      .trim() + (firstChapterText.length > 50 ? "..." : "");
 
   return {
     title: `${currentStory.title} - Kamil Kilani Stories`,
     description: description,
+    images: [
+      {
+        url: `https://kamilkilani.vercel.app/covers/${currentStory.image}`,
+        width: 360,
+        height: 480,
+        alt: currentStory.title,
+      },
+    ],
     keywords: [
       "قصة",
       "كامل كيلاني",
@@ -53,9 +61,9 @@ export async function generateMetadata({
       type: "article",
       images: [
         {
-          url: `/covers/${currentStory.image}`,
-          width: 270,
-          height: 360,
+          url: `https://kamilkilani.vercel.app/covers/${currentStory.image}`,
+          width: 360,
+          height: 480,
           alt: currentStory.title,
         },
       ],
@@ -64,7 +72,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       title: currentStory.title,
       description: description,
-      images: [`/covers/${currentStory.image}`],
+      images: [`https://kamilkilani.vercel.app/covers/${currentStory.image}`],
     },
     alternates: {
       canonical: `/story/${storyId}`,
