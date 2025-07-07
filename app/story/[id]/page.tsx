@@ -38,14 +38,9 @@ export async function generateMetadata({
   return {
     title: `${currentStory.title} - Kamil Kilani Stories`,
     description: description,
-    images: [
-      {
-        url: `https://kamilkilani.vercel.app/covers/${currentStory.image}`,
-        width: 360,
-        height: 480,
-        alt: currentStory.title,
-      },
-    ],
+    icons: {
+      icon: `https://kamilkilani.vercel.app/covers/${currentStory.image}`,
+    },
     keywords: [
       "قصة",
       "كامل كيلاني",
