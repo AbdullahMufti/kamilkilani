@@ -120,7 +120,7 @@ export default function StoryReader({
             </div>
           )}
 
-          <div className="max-w-none">
+          <div className="max-w-none  p-4 rounded-lg">
             {story.chapters.map((EachChap, idx) => (
               <div key={idx} className="mb-8">
                 <div className="leading-relaxed ml-20 md:ml-10">
