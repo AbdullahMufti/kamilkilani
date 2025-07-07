@@ -2,7 +2,6 @@ import { KamilK } from "@/data/data";
 import Navigation from "../../components/Navigation";
 import StoryReader from "../../components/StoryReader";
 import { notFound } from "next/navigation";
-import { Metadata } from "next";
 
 interface StoryPageProps {
   params: {
