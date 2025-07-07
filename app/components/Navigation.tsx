@@ -4,21 +4,9 @@ import DarkModeToggle from "./DarkModeToggle";
 
 interface NavigationProps {
   storyTitle?: string;
-  fontSize?: number;
-  onFontSizeChange?: (size: number) => void;
-  currentIndex?: number;
-  totalStories?: number;
-  onIndexChange?: (index: number) => void;
 }
 
-export default function Navigation({
-  storyTitle,
-  fontSize,
-  onFontSizeChange,
-  currentIndex,
-  totalStories,
-  onIndexChange,
-}: NavigationProps) {
+export default function Navigation({ storyTitle }: NavigationProps) {
   return (
     <nav className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-40">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">

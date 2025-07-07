@@ -90,14 +90,7 @@ export default function StoryPage({ params }: StoryPageProps) {
 
   return (
     <>
-      <Navigation
-        storyTitle={currentStory.title}
-        fontSize={fontSize}
-        onFontSizeChange={setFontSize}
-        currentIndex={storyIndex}
-        totalStories={KamilK.length}
-        onIndexChange={handleIndexChange}
-      />
+      <Navigation storyTitle={currentStory.title} />
 
       {/* Floating Controls - Left Border */}
       <FloatingControls
