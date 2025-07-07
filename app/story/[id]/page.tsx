@@ -4,13 +4,7 @@ import StoryReader from "../../components/StoryReader";
 import { notFound } from "next/navigation";
 import { Metadata } from "next";
 
-interface StoryPageProps {
-  params: {
-    id: string;
-  };
-}
-
-interface MetadataProps {
+interface PageProps {
   params: Promise<{
     id: string;
   }>;
@@ -19,7 +13,7 @@ interface MetadataProps {
 // Generate metadata for the page
 export async function generateMetadata({
   params,
-}: MetadataProps): Promise<Metadata> {
+}: PageProps): Promise<Metadata> {
   const { id } = await params;
   const storyId = parseInt(id);
 
@@ -78,8 +72,9 @@ export async function generateMetadata({
   };
 }
 
-export default function StoryPage({ params }: StoryPageProps) {
-  const storyId = parseInt(params.id);
+export default async function StoryPage({ params }: PageProps) {
+  const { id } = await params;
+  const storyId = parseInt(id);
 
   // Validate story ID
   if (isNaN(storyId) || storyId < 0 || storyId >= KamilK.length) {
