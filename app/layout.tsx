@@ -1,10 +1,16 @@
 import type { Metadata } from "next";
-import { Noto_Naskh_Arabic } from "next/font/google";
+import { Noto_Naskh_Arabic, Roboto } from "next/font/google";
 import "./globals.css";
 
 const notoNaskhArabic = Noto_Naskh_Arabic({
   variable: "--font-noto-naskh-arabic",
   subsets: ["latin"],
+});
+
+const roboto = Roboto({
+  variable: "--font-roboto",
+  subsets: ["latin"],
+  weight: ["400", "700"],
 });
 
 export const metadata: Metadata = {
@@ -37,7 +43,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={` ${notoNaskhArabic.variable} antialiased`}>
+      <body
+        className={` ${notoNaskhArabic.variable} ${roboto.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

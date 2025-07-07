@@ -19,7 +19,7 @@ export default function Home() {
   return (
     <main dir="rtl" className="min-h-screen ">
       <div className="max-w-6xl mx-auto px-4 py-8">
-        <div className="fixed top-0 left-0 right-0 z-50 flex flex-col items-center bg-white dark:bg-gray-900 text-gray-800 dark:text-white">
+        <div className="flex flex-col items-center border-b border-gray-900 dark:border-gray-200 ">
           <div className="flex flex-row justify-between items-center gap-2 mb-2">
             <button
               onClick={decreaseFontSize}
@@ -70,7 +70,7 @@ export default function Home() {
             <DarkModeToggle />
           </div>
 
-          <h1 className="text-2xl md:text-6xl font-bold text-center mb-2 ">
+          <h1 className="text-2xl md:text-6xl font-bold text-center mb-2">
             قصص كاميل كيلاني
           </h1>
         </div>
