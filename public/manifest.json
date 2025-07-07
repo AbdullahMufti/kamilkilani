@@ -1,0 +1,27 @@
+{
+  "name": "قصص كاميل كيلاني - Kamil Kilani Stories",
+  "short_name": "قصص كاميل كيلاني",
+  "description": "مجموعة من أجمل قصص كاميل كيلاني للأطفال والكبار",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/kk.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/kk.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "books", "entertainment"],
+  "lang": "ar",
+  "dir": "rtl"
+}
