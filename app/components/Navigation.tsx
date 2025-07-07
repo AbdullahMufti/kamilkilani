@@ -8,7 +8,7 @@ interface NavigationProps {
 
 export default function Navigation({ storyTitle }: NavigationProps) {
   return (
-    <nav className="fixed top-0 left-0 right-0 bg-white/90 dark:bg-gray-900/90 backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-40">
+    <nav className="fixed top-0 left-0 right-0  backdrop-blur-sm border-b border-gray-200 dark:border-gray-700 z-40">
       <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
         {/* Left side - Back button and Previous */}
         <div className="flex items-center gap-4">
@@ -35,7 +35,7 @@ export default function Navigation({ storyTitle }: NavigationProps) {
 
         {/* Center - Story Title */}
         {storyTitle && (
-          <h1 className="text-2xl md:text-4xl font-semibold text-gray-800 dark:text-white text-center">
+          <h1 className="text-2xl md:text-4xl font-semibold  text-center">
             {storyTitle}
           </h1>
         )}
