@@ -65,6 +65,7 @@ export default function StoryPage({ params }: StoryPageProps) {
   }
 
   const currentStory = KamilK[storyIndex];
+
   const increaseFontSize = () => {
     if (fontSize) {
       setFontSize(Math.min(fontSize + 2, 48));
@@ -76,6 +77,7 @@ export default function StoryPage({ params }: StoryPageProps) {
       setFontSize(Math.max(fontSize - 2, 12));
     }
   };
+
   const goToPrevious = () => {
     if (storyIndex !== undefined && storyIndex > 0) {
       handleIndexChange(storyIndex - 1);
@@ -104,7 +106,7 @@ export default function StoryPage({ params }: StoryPageProps) {
 
       <main dir="rtl" className="pb-8  min-h-screen ">
         <div style={{ fontSize: `${fontSize}px` }} className="">
-          <h1 className="text-8xl text-center font-bold mt-20 text-gray-800 dark:text-white">
+          <h1 className="text-2xl md:text-8xl text-center font-bold mt-20 ">
             {currentStory.title}
           </h1>
           <img
@@ -140,6 +142,9 @@ export default function StoryPage({ params }: StoryPageProps) {
               </div>
             ))}
           </div>
+        </div>
+        <div className="text-center mt-12">
+          <div>Data scraped from hindawi.org for educational purposes</div>
         </div>
       </main>
     </>
